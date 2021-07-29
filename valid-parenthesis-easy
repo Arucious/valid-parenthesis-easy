@@ -1,0 +1,24 @@
+class Solution:
+    # can probably add each parenthesis to a stack that I push and pop from
+    def isValid(self, s: str) -> bool:
+        pairs = { 
+            "(": ")",
+            #")": "(",
+            "{": "}",
+            #"}": "{",
+            "[": "]",
+            #"]": "["           
+        }
+        tracker = []
+        for i in s:
+            if len(tracker) == 0:
+                tracker.append(i)
+                continue
+            if i == pairs.get(tracker[-1]):
+                tracker.pop()
+            else:
+                tracker.append(i)
+        if len(tracker) == 0:
+            return True
+        else: 
+            return False
